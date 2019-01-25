@@ -10,7 +10,7 @@ jdk:
   - openjdk10
   - openjdk11
   - oraclejdk8
-  - oraclejdk11
+  - oraclejdk1
 
 runtime:
   nodePool: dynamic__x86_64__CentOS_7__c4_large
@@ -18,17 +18,9 @@ runtime:
 build:
   pre_ci_boot:
     image_name: drydock/c7scaall
-    image_tag: master
+    image_tag: v6.12.4
     pull: true
     
   ci:
     - java -version
     - echo $SHIPPABLE_SCALA_VERSION
-    - docker pull shippabledocker/sample_node_pvt:ecr
-    
-integrations:
-    
-  hub:
- #Docker integration
-    - integrationName: ship-docker
-      type: dockerRegistryLogin
